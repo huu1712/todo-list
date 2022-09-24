@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Todo List</title>
+</head>
+
+<body>
+<div id="app">
+    <h2 class="title">TODO LIST</h2>
+
+
+    <div class="form-item">
+        <input type="text" id="todo-field" autocomplete="off" required v-model="newTask" @keyup.enter="add(newTask)">
+        <label for="todo-field">Todo...</label>
+        <button class="add" @click="add(newTask)">Add task</button>
+    </div>
+
+    <div class="total">
+        <p class="all-task">All task({{listTask.length}})</p>
+        <p class="task-done">Task done({{listTaskDone.length}})</p>
+        <p class="task-doing">Doing({{listTask.length - listTaskDone.length}})</p>
+    </div>
+
+    <ul>
+        <li class="item-todo" v-for="(item, index) in listTask" :key="index">
+            <p :class="{done: item.isDone}" @click="finish(item)">{{index+1}}.&nbsp{{item.nameTask}}</p>
+            <button class="clear" @click="clearItem(index)"><i class="fa-solid fa-xmark"></i></button>
+        </li>
+    </ul>
+    <button class="clear" @click="clearAll()">Clear all</button>
+
+
+</div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="index.js"></script>
+
+</body>
+</html>
