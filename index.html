@@ -21,11 +21,11 @@
         <button class="add" @click="add(newTask)">Add task</button>
     </div>
 
-    <div class="total">
+<!--     <div class="total">
         <p class="all-task">All task({{listTask.length}})</p>
         <p class="task-done">Task done({{listTaskDone.length}})</p>
         <p class="task-doing">Doing({{listTask.length - listTaskDone.length}})</p>
-    </div>
+    </div> -->
 
     <ul>
         <li class="item-todo" v-for="(item, index) in listTask" :key="index">
